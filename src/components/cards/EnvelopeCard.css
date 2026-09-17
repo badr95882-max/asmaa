@@ -1,0 +1,271 @@
+.envelope-card-wrapper {
+  background: linear-gradient(135deg, rgba(255, 122, 24, 0.12), rgba(255, 42, 133, 0.12), rgba(250, 204, 21, 0.08));
+  border: 1.5px solid rgba(255, 146, 60, 0.35);
+  border-radius: 26px;
+  padding: 42px 28px;
+  text-align: center;
+  backdrop-filter: blur(24px);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(255, 122, 24, 0.15);
+}
+
+.ec-decoration {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.ec-deco-el {
+  font-size: 1.3rem;
+  animation: float 2.5s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.2s);
+}
+
+.ec-heading {
+  font-size: clamp(1.4rem, 4vw, 1.85rem);
+  font-weight: 800;
+  color: #fff;
+  font-family: var(--font-arabic);
+  margin-bottom: 8px;
+  text-shadow: 0 0 20px rgba(255, 122, 24, 0.45);
+}
+
+.ec-hint {
+  font-size: 0.95rem;
+  color: rgba(255, 220, 200, 0.75);
+  font-family: var(--font-arabic);
+  margin-bottom: 28px;
+  min-height: 24px;
+}
+
+/* Envelope Box */
+.envelope-box {
+  position: relative;
+  width: 250px;
+  height: 160px;
+  margin: 0 auto 32px;
+  cursor: pointer;
+  perspective: 1000px;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.envelope-box:hover {
+  transform: translateY(-4px) scale(1.03);
+}
+
+/* Body */
+.env-body {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #2e0e1a 0%, #1f0812 100%);
+  border: 1.5px solid rgba(255, 146, 60, 0.4);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  overflow: hidden;
+  z-index: 2;
+}
+
+.env-fold-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 80px 0 80px 125px;
+  border-color: transparent transparent transparent rgba(255, 122, 24, 0.08);
+}
+
+.env-fold-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 80px 125px 80px 0;
+  border-color: transparent rgba(255, 42, 133, 0.08) transparent transparent;
+}
+
+.env-fold-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 125px 85px 125px;
+  border-color: transparent transparent rgba(255, 146, 60, 0.12) transparent;
+}
+
+/* 3D Flap */
+.env-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 85px 125px 0 125px;
+  border-color: rgba(255, 122, 24, 0.3) transparent transparent transparent;
+  transform-origin: top center;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.4s ease;
+  z-index: 5;
+}
+
+.flap-unfolded {
+  transform: rotateX(180deg);
+  border-color: rgba(255, 42, 133, 0.25) transparent transparent transparent;
+  z-index: 1;
+}
+
+/* Letter inside */
+.env-letter {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  right: 15px;
+  height: 135px;
+  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 50%, #fed7aa 100%);
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.9s cubic-bezier(0.34, 1.4, 0.64, 1);
+  z-index: 3;
+  overflow: hidden;
+}
+
+.letter-glided {
+  transform: translateY(-90px) scale(1.05);
+  box-shadow: 0 15px 35px rgba(255, 122, 24, 0.35);
+  z-index: 10;
+}
+
+.letter-flower {
+  font-size: 2rem;
+  animation: float 2s ease-in-out infinite;
+}
+
+.letter-watermark {
+  position: absolute;
+  font-size: 5rem;
+  font-weight: 900;
+  color: rgba(255, 122, 24, 0.08);
+  font-family: serif;
+}
+
+/* Wax Seal */
+.wax-seal {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 48px;
+  height: 48px;
+  background: radial-gradient(circle, #ffedd5 10%, #ff7a18 45%, #ff2a85 90%);
+  border-radius: 50%;
+  box-shadow: 0 4px 16px rgba(255, 122, 24, 0.7), inset 0 2px 4px rgba(255,255,255,0.6);
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+}
+
+.seal-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.seal-monogram {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+
+.seal-heart {
+  position: absolute;
+  font-size: 0.6rem;
+  bottom: -4px;
+  right: -6px;
+}
+
+.seal-shatter {
+  animation: sealBreak 0.45s ease forwards;
+}
+
+@keyframes sealBreak {
+  0%   { transform: translateX(-50%) scale(1); opacity: 1; }
+  50%  { transform: translateX(-50%) scale(1.3); filter: brightness(2); }
+  100% { transform: translateX(-50%) scale(0); opacity: 0; }
+}
+
+.seal-particles {
+  position: absolute;
+  inset: 0;
+}
+
+.seal-particle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--orange-400);
+  animation: sealSpark 0.4s ease forwards;
+}
+
+@keyframes sealSpark {
+  0%   { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  100% { transform: translate(calc(-50% + cos(var(--angle)) * 40px), calc(-50% + sin(var(--angle)) * 40px)) scale(0); opacity: 0; }
+}
+
+/* Message Box */
+.ec-message-box {
+  margin-top: 10px;
+  animation: fadeInUp 0.6s ease;
+}
+
+.ec-message-inner {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1.5px solid rgba(255, 146, 60, 0.35);
+  border-radius: 20px;
+  padding: 24px 28px;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.ec-message-text {
+  font-size: clamp(1.05rem, 3.5vw, 1.25rem);
+  color: #fff;
+  line-height: 1.8;
+  font-family: var(--font-arabic);
+  font-weight: 600;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.2em;
+  background: var(--orange-400);
+  margin-right: 4px;
+  vertical-align: middle;
+  animation: typewriterCursor 0.7s infinite;
+}
+
+.ec-signature {
+  margin-top: 16px;
+  text-align: left;
+  font-size: 0.95rem;
+  color: var(--orange-300);
+  font-weight: 700;
+}

@@ -1,0 +1,123 @@
+.main-page {
+  position: relative;
+  min-height: 100vh;
+  background: var(--grad-dark);
+  overflow-x: hidden;
+}
+
+.main-ambient {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.main-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(110px);
+  animation: glowPulse 6s ease-in-out infinite alternate;
+}
+
+.mg-1 {
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, rgba(255, 122, 24, 0.16) 0%, transparent 70%);
+  top: 10%;
+  right: -15%;
+  animation-delay: 0s;
+}
+
+.mg-2 {
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(255, 42, 133, 0.15) 0%, transparent 70%);
+  top: 45%;
+  left: -10%;
+  animation-delay: 2.5s;
+}
+
+.mg-3 {
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(251, 146, 60, 0.14) 0%, transparent 70%);
+  bottom: 15%;
+  right: 15%;
+  animation-delay: 1.2s;
+}
+
+/* Surprise button section */
+.surprise-reveal {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  padding: 80px 20px;
+}
+
+.surprise-reveal-inner {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.5px solid rgba(255, 146, 60, 0.35);
+  border-radius: 28px;
+  padding: 48px 48px;
+  backdrop-filter: blur(24px);
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 50px rgba(255, 122, 24, 0.18);
+}
+
+.surprise-question {
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: #fff;
+  font-family: var(--font-arabic);
+  margin-bottom: 12px;
+}
+
+.surprise-sub-q {
+  font-size: 1.1rem;
+  color: rgba(255, 230, 220, 0.78);
+  font-family: var(--font-arabic);
+  margin-bottom: 32px;
+}
+
+.surprise-btn {
+  position: relative;
+  padding: 20px 60px;
+  background: linear-gradient(135deg, var(--orange-500), var(--rose-hot), var(--pink-500));
+  background-size: 200% 200%;
+  animation: shimmer 3s linear infinite;
+  border: none;
+  border-radius: 50px;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 800;
+  font-family: var(--font-arabic);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 40px rgba(255, 122, 24, 0.55), 0 4px 20px rgba(255, 42, 133, 0.45);
+}
+
+.surprise-btn:hover, .surprise-btn:active {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 16px 50px rgba(255, 122, 24, 0.7), 0 0 40px rgba(255, 42, 133, 0.5);
+}
+
+.surprise-btn-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.2), transparent);
+  border-radius: 50px;
+}
+
+@media (max-width: 480px) {
+  .surprise-reveal-inner {
+    padding: 32px 24px;
+  }
+
+  .surprise-question {
+    font-size: 1.35rem;
+  }
+}

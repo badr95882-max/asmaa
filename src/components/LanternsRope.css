@@ -1,0 +1,290 @@
+/* ==========================================================================
+   Lanterns Rope Component Styles
+   ========================================================================== */
+
+.lanterns-rope-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none; /* children enable pointer events */
+  z-index: 1100;
+  overflow: visible;
+  padding-bottom: 30px;
+}
+
+/* 1. Rope Line SVG spanning across the top */
+.rope-svg {
+  position: absolute;
+  top: -4px;
+  left: 0;
+  width: 100%;
+  height: 48px;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 8px rgba(245, 158, 11, 0.4));
+  z-index: 2;
+}
+
+/* 2. Hanging Lanterns Container */
+.lanterns-list {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 20px;
+  z-index: 3;
+}
+
+/* 3. Individual Lantern Wrapper */
+.lantern-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: auto;
+  cursor: pointer;
+  transform-origin: top center;
+  animation: lanternSway var(--sway-duration, 4s) ease-in-out infinite alternate;
+  animation-delay: var(--sway-delay, 0s);
+  transition: filter 0.3s ease, transform 0.3s ease;
+  user-select: none;
+}
+
+/* Boosted sway on click / tap */
+.lantern-wrapper.lantern-boosted-sway {
+  animation: lanternBoostedSway 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* 4. Cord / Chain connecting lantern to rope */
+.lantern-cord {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cord-line {
+  width: 2px;
+  height: var(--cord-len, 40px);
+  background: linear-gradient(to bottom, #f59e0b, #d97706, #78350f);
+  box-shadow: 0 0 6px rgba(245, 158, 11, 0.4);
+}
+
+.cord-ring {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid #fef08a;
+  background: #b45309;
+  box-shadow: 0 0 4px #f59e0b;
+  margin-top: -2px;
+}
+
+/* 5. Lantern Graphic Body */
+.lantern-body-box {
+  position: relative;
+  width: calc(64px * var(--lantern-scale, 1));
+  height: calc(108px * var(--lantern-scale, 1));
+  margin-top: -2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.fanous-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 6px 16px var(--glass-glow, rgba(245, 158, 11, 0.45)));
+  transition: filter 0.3s ease;
+}
+
+/* Ambient warm spotlight behind each lantern */
+.lantern-ambient-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--glass-glow, rgba(255, 180, 0, 0.4)) 0%, rgba(255, 150, 0, 0) 70%);
+  filter: blur(14px);
+  pointer-events: none;
+  animation: glowPulse 3s ease-in-out infinite alternate;
+}
+
+/* 6. Candle & Flame Animations */
+.fanous-flame {
+  animation: flameFlicker 1.8s ease-in-out infinite alternate;
+  transform-origin: 35px 75px;
+}
+
+.fanous-glass {
+  animation: glassPulsate 2.4s ease-in-out infinite alternate;
+}
+
+/* Sparkles on hover */
+.lantern-sparkles {
+  position: absolute;
+  top: -15px;
+  display: flex;
+  gap: 8px;
+  font-size: 14px;
+  animation: floatUpFade 1s ease forwards;
+  pointer-events: none;
+}
+
+/* 7. Tooltip Greeting Popup */
+.lantern-tooltip {
+  position: absolute;
+  bottom: -40px;
+  background: rgba(18, 12, 35, 0.92);
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6), 0 0 12px rgba(245, 158, 11, 0.3);
+  backdrop-filter: blur(8px);
+  border-radius: 9999px;
+  padding: 6px 14px;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(6px) scale(0.9);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 50;
+}
+
+.lantern-tooltip.tooltip-open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.tooltip-text {
+  font-family: var(--font-arabic, 'Tajawal', sans-serif);
+  font-size: 13px;
+  font-weight: 700;
+  color: #fffbeb;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+}
+
+.tooltip-arrow {
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 10px;
+  height: 10px;
+  background: rgba(18, 12, 35, 0.92);
+  border-left: 1px solid rgba(251, 191, 36, 0.4);
+  border-top: 1px solid rgba(251, 191, 36, 0.4);
+}
+
+/* Hover effects */
+.lantern-wrapper:hover .fanous-svg {
+  filter: drop-shadow(0 8px 24px var(--primary-color, #f59e0b)) drop-shadow(0 0 15px #ffd166);
+}
+
+.lantern-wrapper:hover .lantern-body-box {
+  transform: scale(1.08);
+}
+
+/* ==========================================================================
+   Keyframes
+   ========================================================================== */
+
+@keyframes lanternSway {
+  0% {
+    transform: rotate(var(--sway-deg, 5deg));
+  }
+  100% {
+    transform: rotate(calc(var(--sway-deg, 5deg) * -1));
+  }
+}
+
+@keyframes lanternBoostedSway {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(16deg) scale(1.08); }
+  50% { transform: rotate(-14deg) scale(1.05); }
+  75% { transform: rotate(8deg) scale(1.02); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+
+@keyframes glowPulse {
+  0% {
+    opacity: 0.6;
+    transform: translate(-50%, -40%) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -40%) scale(1.15);
+  }
+}
+
+@keyframes flameFlicker {
+  0% {
+    transform: scale(1) skewX(0deg);
+    opacity: 0.9;
+  }
+  30% {
+    transform: scale(1.12, 0.92) skewX(3deg);
+    opacity: 1;
+  }
+  70% {
+    transform: scale(0.94, 1.06) skewX(-2deg);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(1.05, 1) skewX(1.5deg);
+    opacity: 0.95;
+  }
+}
+
+@keyframes glassPulsate {
+  0% { opacity: 0.85; }
+  100% { opacity: 1; filter: drop-shadow(0 0 6px #ffd166); }
+}
+
+@keyframes floatUpFade {
+  0% {
+    opacity: 0;
+    transform: translateY(5px) scale(0.7);
+  }
+  40% {
+    opacity: 1;
+    transform: translateY(-8px) scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.9);
+  }
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  .lantern-wrapper:nth-child(2),
+  .lantern-wrapper:nth-child(6) {
+    display: none;
+  }
+  .lanterns-list {
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .lantern-wrapper:nth-child(3),
+  .lantern-wrapper:nth-child(5) {
+    display: none;
+  }
+  .lantern-body-box {
+    transform: scale(0.85);
+  }
+  .lantern-tooltip {
+    font-size: 11px;
+    padding: 4px 10px;
+    bottom: -32px;
+  }
+}

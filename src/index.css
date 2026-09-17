@@ -1,0 +1,251 @@
+/* ================================
+   ASMAA BIRTHDAY — GLOBAL STYLES
+   Vibrant Sunset Orange & Radiant Pink Theme
+   ================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Radiant Orange Palette */
+  --orange-300: #fdba74;
+  --orange-400: #fb923c;
+  --orange-500: #f97316;
+  --orange-600: #ea580c;
+  --orange-glow: #ff7a18;
+
+  /* Peach & Coral */
+  --peach-200:  #fecdd3;
+  --peach-300:  #fda4af;
+  --coral-400:  #ff6b6b;
+  --coral-500:  #f43f5e;
+
+  /* Radiant Pink & Rose Palette */
+  --pink-200:   #fbcfe8;
+  --pink-300:   #f9a8d4;
+  --pink-400:   #f472b6;
+  --pink-500:   #ec4899;
+  --pink-600:   #db2777;
+  --rose-hot:   #ff2a85;
+  --rose-600:   #e11d48;
+
+  /* Warm Gold / Amber accents */
+  --gold-300:   #fde047;
+  --gold-400:   #facc15;
+  --gold-500:   #eab308;
+
+  /* Deep warm dark velvet backgrounds (infused with sunset tones, not cold blue) */
+  --bg-dark:       #0d0408;
+  --bg-darker:     #070204;
+  --bg-surface:    #170810;
+  --bg-card:       rgba(255, 122, 24, 0.04);
+  --bg-card-hover: rgba(255, 42, 133, 0.08);
+
+  /* Glassmorphism */
+  --glass-bg:       rgba(255, 255, 255, 0.05);
+  --glass-border:   rgba(255, 160, 122, 0.18);
+  --glass-shadow:   rgba(255, 122, 24, 0.2);
+
+  /* Glow colors */
+  --glow-orange:  rgba(255, 122, 24, 0.55);
+  --glow-pink:    rgba(255, 42, 133, 0.55);
+  --glow-peach:   rgba(253, 164, 175, 0.45);
+  --glow-rose:    rgba(244, 63, 94, 0.5);
+
+  /* Typography */
+  --font-arabic:  'Cairo', 'Tajawal', 'Amiri', sans-serif;
+
+  /* Gradients */
+  --grad-primary:     linear-gradient(135deg, #ff7a18 0%, #ff2a85 50%, #f43f5e 100%);
+  --grad-sunset:      linear-gradient(135deg, #ff8c42 0%, #f97316 40%, #ff2a85 100%);
+  --grad-peach-pink:  linear-gradient(135deg, #fb923c 0%, #f472b6 60%, #ec4899 100%);
+  --grad-rose-gold:   linear-gradient(135deg, #ffbe0b 0%, #fb5607 50%, #ff006e 100%);
+  --grad-dark:        linear-gradient(180deg, #0d0408 0%, #1f0714 50%, #0a0306 100%);
+  --grad-card:        linear-gradient(135deg, rgba(255,122,24,0.12), rgba(236,72,153,0.12));
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-arabic);
+  background: var(--bg-dark);
+  color: #fff;
+  overflow-x: hidden;
+  direction: rtl;
+  text-align: right;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-darker);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--orange-500), var(--pink-500));
+  border-radius: 4px;
+}
+
+/* Selection */
+::selection {
+  background: rgba(255, 122, 24, 0.35);
+  color: #fff;
+}
+
+/* ================================
+   UTILITY CLASSES
+   ================================ */
+
+.glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.gradient-text {
+  background: var(--grad-sunset);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-pink {
+  background: var(--grad-peach-pink);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glow {
+  text-shadow: 0 0 20px var(--glow-orange), 0 0 40px var(--glow-pink);
+}
+
+/* ================================
+   ANIMATIONS
+   ================================ */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33%       { transform: translateY(-8px) rotate(2deg); }
+  66%       { transform: translateY(-4px) rotate(-2deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px var(--glow-orange), 0 0 40px rgba(255,42,133,0.3); }
+  50%       { box-shadow: 0 0 40px var(--glow-orange), 0 0 80px rgba(255,42,133,0.55); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes spinReverse {
+  from { transform: rotate(360deg); }
+  to   { transform: rotate(0deg); }
+}
+
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  14%       { transform: scale(1.18); }
+  28%       { transform: scale(1); }
+  42%       { transform: scale(1.12); }
+  70%       { transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.3; transform: scale(0.7); }
+}
+
+@keyframes drift {
+  0%   { transform: translateX(0) translateY(0) rotate(0deg); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateX(var(--dx, 50px)) translateY(var(--dy, -100px)) rotate(var(--dr, 180deg)); opacity: 0; }
+}
+
+@keyframes confettiFall {
+  0%   { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.45; filter: blur(45px); }
+  50%       { opacity: 0.85; filter: blur(65px); }
+}
+
+@keyframes ripple {
+  0%   { transform: scale(0); opacity: 1; }
+  100% { transform: scale(4); opacity: 0; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-10px); }
+  40%       { transform: translateX(10px); }
+  60%       { transform: translateX(-8px); }
+  80%       { transform: translateX(8px); }
+}
+
+@keyframes flameFlicker {
+  0%, 100% { transform: scaleY(1) scaleX(1); opacity: 1; }
+  25%       { transform: scaleY(1.15) scaleX(0.9); opacity: 0.92; }
+  50%       { transform: scaleY(0.92) scaleX(1.08); opacity: 1; }
+  75%       { transform: scaleY(1.1) scaleX(0.94); opacity: 0.96; }
+}
+
+@keyframes slideInUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes balloonFloat {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50%       { transform: translateY(-20px) rotate(3deg); }
+}
+
+@keyframes typewriterCursor {
+  0%, 50% { border-color: var(--orange-400); }
+  51%, 100% { border-color: transparent; }
+}
